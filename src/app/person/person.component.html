@@ -1,0 +1,15 @@
+<div>
+  <img width="300" src="{{data.image.data[0].images.downsized_medium.url}}" alt="">
+  <a (click)="toggleInput($event)" href="#">?</a>
+  <br>
+  <a (click)="toggleModal($event)" href="#">...</a>
+  <div *ngIf="showInput && !hasPlayed">
+    <input type="text" #personName >
+    <button (click)="play(personName.value)">Ok</button>
+  </div>
+  <div *ngIf="hasPlayed">
+    {{personName}}
+  </div>
+  <modal *ngIf="showModal" [person]="data" (closeModal)="toggleModal()">
+  </modal>
+</div>

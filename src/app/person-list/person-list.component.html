@@ -1,0 +1,6 @@
+<person *ngFor="let p of people.results" [data]="p"></person>
+<div>
+    <a href="#" (click)="nextPage($event)">next</a>
+    <br>
+    <a href="#" (click)="previousPage($event)">previous</a>
+</div>
