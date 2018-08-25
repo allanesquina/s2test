@@ -1,0 +1,14 @@
+.list {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.pagination {
+    text-align: center;
+    a {
+        font-size: 30px;
+        text-decoration: none;
+        color: #000;
+        margin: 15px;
+    }
+}

@@ -1,6 +1,9 @@
-<person *ngFor="let p of people.results" [data]="p"></person>
-<div>
-    <a href="#" (click)="nextPage($event)">next</a>
-    <br>
-    <a href="#" (click)="previousPage($event)">previous</a>
+<div class="content">
+    <div class="list">
+        <person *ngFor="let p of people.results" [data]="p"></person>
+    </div>
+    <div class="pagination">
+        <a *ngIf="people.previous" href="#" (click)="previousPage($event)">Anterior</a>
+        <a *ngIf="people.next" href="#" (click)="nextPage($event)">Proxima</a>
+    </div>
 </div>

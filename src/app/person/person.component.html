@@ -1,15 +1,21 @@
-<div>
-  <img width="300" src="{{data.image.data[0].images.downsized_medium.url}}" alt="">
+<div class="card">
+  <div class="img" [ngStyle]="{
+      'background-image': 'url(' + data.image.data[0].images.downsized_medium.url + ')'
+  }">
+  </div>
+
   <a (click)="toggleInput($event)" href="#">?</a>
-  <br>
   <a (click)="toggleModal($event)" href="#">...</a>
-  <div *ngIf="showInput && !hasPlayed">
+  
+  <div *ngIf="showInput && !hasPlayed" class="input-wrapper">
     <input type="text" #personName >
     <button (click)="play(personName.value)">Ok</button>
   </div>
-  <div *ngIf="hasPlayed">
-    {{personName}}
+
+  <div *ngIf="hasPlayed" [className]="isCorrect ? 'placeholder-success' : 'placeholder-error'">
+    {{data.personName}}
   </div>
+
   <modal *ngIf="showModal" [person]="data" (closeModal)="toggleModal()">
   </modal>
 </div>

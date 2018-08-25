@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
 
-
 @Component({
   selector: 'modal',
   templateUrl: './modal.component.html',
@@ -10,12 +9,17 @@ import { Observable } from 'rxjs';
 })
 export class ModalComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
-  @Input() person: Object;
+  @Input() person: any;
 
-  constructor(private api: ApiService) { }
+  private isLoaded: Boolean;
+
+  constructor(private api: ApiService) { 
+    this.isLoaded = true;
+  }
 
   ngOnInit() {
     if(this.person.isLoaded) return;
+    this.isLoaded = false;
 
     this.api.getPerson(this.person).subscribe((result) => {
       const {films, vehicles} = this.person;
@@ -35,9 +39,9 @@ export class ModalComponent implements OnInit {
       pos++;
       this.person.specie = result[pos].name;
       pos++;
-      // this.person.image = result[pos]
-      console.log(result[pos].data[0].images.downsized_medium)
+
       this.person.isLoaded = true;
+      this.isLoaded = true;
     });
   }
 

@@ -1,2 +1,9 @@
-<person-list></person-list>
-<countdown (openEndModal)="openEndModal()" ></countdown> <end-modal *ngIf="gameOver"></end-modal>
+<div class="container">
+    <app-header>
+        <img width="100px" src="http://getdrawings.com/img/darth-vader-silhouette-25.png" alt="">
+        <h1>StarQuiz!</h1>
+        <countdown (openEndModal)="openEndModal()" ></countdown> 
+        <end-modal *ngIf="gameOver"></end-modal>
+    </app-header>
+    <person-list></person-list>
+</div>

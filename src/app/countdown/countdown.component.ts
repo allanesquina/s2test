@@ -10,13 +10,13 @@ export class CountdownComponent implements OnInit {
   @Output() openEndModal = new EventEmitter();
 
   private currentTime: String;
-  private interval: String;
+  private interval: number;
 
   constructor() { }
 
   ngOnInit() {
-    // let duration = 60 * 2;
-    let duration = 6 * 1;
+    let duration = 60 * 2;
+    // let duration = 1 * 1;
     this.start(duration);
   }
 

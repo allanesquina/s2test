@@ -1,0 +1,37 @@
+.container {
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    position: relative;
+    background: #fff;
+    width: 40%;
+    height: 40%;
+    margin: auto;
+    z-index: 100;
+    border-radius: 30px;
+    padding: 50px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin: 5px;
+}
+
+.close {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+    cursor: pointer;
+}

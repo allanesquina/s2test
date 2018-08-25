@@ -16,10 +16,6 @@ export class GameComponent implements OnInit {
   ngOnInit() {}
 
   openEndModal() {
-    console.log('open')
     this.gameOver = true;
   }
-
-
-
 }

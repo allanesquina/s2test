@@ -1,5 +1,24 @@
-<div>
-  <h1>Quiz Finalizado!</h1>
-  <h2>{{score}} pontos</h2>
-  <button class="close" (click)="close()">close</button>
+<div class="container">
+  <div class="content">
+    <h1>Quiz Finalizado!</h1>
+    <h2>{{score}} pontos</h2>
+
+    <div *ngIf="!seeRank" class="form">
+      <div *ngIf="validationError" class="box-alert">
+        Ops! Dados incorretos!
+      </div>
+      <label for="name">
+        Nome:
+        <input type="text" #name>
+      </label>
+      <label for="email">
+        Email:
+        <input type="text" #email>
+      </label>
+      <button class="close" (click)="handleClickSaveRank(name.value, email.value)">Salvar</button>
+    </div>
+    <div *ngIf="seeRank" class="rank">
+      <a routerLink="/rank" class="btn">Ver Rank</a>
+    </div>
+  </div>
 </div>

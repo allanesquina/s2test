@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ScoreService } from '../score.service';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { StorageService } from '../storage.service';
 
 @Component({
   selector: 'person',
@@ -12,23 +12,30 @@ export class PersonComponent implements OnInit {
   private showModal: Boolean;
   private score: Number;
   private hasPlayed: Boolean;
-  private personName: String;
+  private isCorrect: Boolean;
 
-  @Input() data: Object;
+  @Input() data: any;
+  @ViewChild('personName') private elementRef: ElementRef;
 
-  constructor(private scoreService: ScoreService) {
+  constructor(private StorageService: StorageService) {
     this.score = 10;
     this.hasPlayed = false;
-    this.personName = '';
   }
 
   ngOnInit() {
-    console.log(this)
+    let person = this.StorageService.getPerson(this.data);
+    if(person) {
+      this.data = person;
+      this.hasPlayed = person.hasPlayed;
+    }
   }
 
   toggleInput(e) {
     e.preventDefault();
     this.showInput = !this.showInput;
+    setTimeout(() => {
+      this.elementRef.nativeElement.focus();
+    }, 100);
   }
 
   toggleModal(e) {
@@ -44,13 +51,19 @@ export class PersonComponent implements OnInit {
   }
 
   play(name) {
-    if(this.hasPlayed) return;
+    if(this.data.hasPlayed) return;
 
     if(this.compareName(name)) {
-      this.scoreService.setScore(this.score);
+      this.StorageService.setScore(this.score);
+      this.isCorrect = true;
+    } else {
+      this.isCorrect = false;
     }
 
-    this.personName = name;
+    this.data.personName = name;
+    this.data.hasPlayed = true;
+    this.StorageService.setPerson(this.data);
+
     this.hasPlayed = true;
   }
 }

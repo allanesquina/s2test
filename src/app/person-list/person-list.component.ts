@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class PersonListComponent implements OnInit {
 
-  people: Object;
+  people: any;
 
   constructor(private api: ApiService) { 
     this.prepareData = this.prepareData.bind(this);

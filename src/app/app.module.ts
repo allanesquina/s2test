@@ -8,12 +8,14 @@ import { GameComponent } from './game/game.component';
 import { MenuComponent } from './menu/menu.component';
 
 import { ApiService } from './api.service';
-import { ScoreService } from './score.service';
+import { StorageService } from './storage.service';
 import { PersonListComponent } from './person-list/person-list.component';
 import { PersonComponent } from './person/person.component';
 import { ModalComponent } from './modal/modal.component';
 import { CountdownComponent } from './countdown/countdown.component';
 import { EndModalComponent } from './end-modal/end-modal.component';
+import { RankComponent } from './rank/rank.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { EndModalComponent } from './end-modal/end-modal.component';
     PersonComponent,
     ModalComponent,
     CountdownComponent,
-    EndModalComponent
+    EndModalComponent,
+    RankComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,7 @@ import { EndModalComponent } from './end-modal/end-modal.component';
   ],
   providers: [
     ApiService,
-    ScoreService
+    StorageService
   ],
   bootstrap: [AppComponent]
 })
