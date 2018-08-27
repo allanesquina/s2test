@@ -53,7 +53,6 @@ export class StorageService {
   setRank(score) {
     let rank = this.getRank() || [];
     rank.push(score);
-    console.log(rank)
     return this.saveInLocal('rank', rank);
   }
 
